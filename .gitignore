@@ -1,6 +1,3 @@
-# output
-*.pdf
-
 # intermediate files
 *.aux
 *.bbl
@@ -11,3 +8,6 @@
 *.snm
 *.toc
 *.synctex.gz
+*.fdb_latexmk
+*.fls
+magma.sty
