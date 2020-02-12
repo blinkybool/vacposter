@@ -1,0 +1,192 @@
+\ProvidesPackage{catalan-drawings}[Catalan Drawings]
+
+\RequirePackage{ltxcmds}
+\makeatletter
+\newcommand*{\getdata}[2]{%
+  \expandafter\ltx@CarNumth\expandafter{%
+    \the\numexpr(#1)\expandafter
+  }#2\@nil
+}
+\makeatother
+
+
+
+\newcommand*{\triangulations} {
+  { \triangulation{2}{} }
+  { \factoredTriangulation{3}{2}{}{} }
+  { \factoredTriangulation{4}{2}{}{2/4} }
+  { \factoredTriangulation{4}{3}{1/3}{} }
+  { \factoredTriangulation{5}{2}{}{3/5,2/5} }
+  { \factoredTriangulation{5}{2}{}{2/4,2/5} }
+  { \factoredTriangulation{5}{3}{1/3}{3/5} }
+  { \factoredTriangulation{5}{4}{2/4,1/4}{} }
+  { \factoredTriangulation{5}{4}{1/3,1/4}{} }
+}
+
+\newcommand*{\staircasePolygons}{
+  {
+    \draw[step=1,gray,thin] (0,0) grid (0,0);  
+  \draw (0,0) -- (1,0);  
+  \draw (0,0) -- (1,0);  
+  \draw[fill] (0, 0) circle;  
+  \draw[fill] (1, 0) circle;
+  }
+  {
+    \draw[step=1,gray,thin] (0,0) grid (1,1);  
+  \draw[draw=none, fill=\fstColour!20] (0,0) -- (0,1) -- (0,0);  
+  \draw[draw=none, fill=\sndColour!20] (0,1) -- (1,1) -- (1,1) -- (0,1);  
+  \draw[\fstColour] (0,0) -- (0,1);  
+  \draw[\fstColour] (0,0);  
+  \draw[\sndColour] (0,1) -- (1,1);  
+  \draw[\sndColour] (0,0) -- (1,0);  
+  \draw (1,0) -- (1,1);  
+  \draw[draw=none, fill=\fstColour] (0, 0) circle;  
+  \draw[draw=none, fill=\bothColour] (0, 1) circle;  
+  \draw[draw=none, fill=\sndColour] (1, 1) circle;
+  }
+  {
+    \draw[step=1,gray,thin] (0,0) grid (2,2);  
+  \draw[draw=none, fill=\fstColour!20] (0,0) -- (0,1) -- (0,0);  
+  \draw[draw=none, fill=\sndColour!20] (0,1) -- (0,2) -- (1,2) -- (1,2) -- (1,1) -- (0,1);  
+  \draw[\fstColour] (0,0) -- (0,1);  
+  \draw[\fstColour] (0,0);  
+  \draw[\sndColour] (0,1) -- (0,2) -- (1,2);  
+  \draw[\sndColour] (0,0) -- (1,0) -- (1,1);  
+  \draw (1,1) -- (1,2);  
+  \draw[draw=none, fill=\fstColour] (0, 0) circle;  
+  \draw[draw=none, fill=\bothColour] (0, 1) circle;  
+  \draw[draw=none, fill=\sndColour] (1, 2) circle;
+  }
+  {
+    \draw[step=1,gray,thin] (0,0) grid (2,2);  
+  \draw[draw=none, fill=\fstColour!20] (0,0) -- (0,1) -- (1,1) -- (1,0) -- (0,0);  
+  \draw[draw=none, fill=\sndColour!20] (1,1) -- (2,1) -- (2,1) -- (1,1);  
+  \draw[\fstColour] (0,0) -- (0,1) -- (1,1);  
+  \draw[\fstColour] (0,0) -- (1,0);  
+  \draw[\sndColour] (1,1) -- (2,1);  
+  \draw[\sndColour] (1,0) -- (2,0);  
+  \draw (2,0) -- (2,1);  
+  \draw[draw=none, fill=\fstColour] (0, 0) circle;  
+  \draw[draw=none, fill=\bothColour] (1, 1) circle;  
+  \draw[draw=none, fill=\sndColour] (2, 1) circle;
+  }
+  {
+    \draw[step=1,gray,thin] (0,0) grid (3,3);  
+  \draw[draw=none, fill=\fstColour!20] (0,0) -- (0,1) -- (0,0);  
+  \draw[draw=none, fill=\sndColour!20] (0,1) -- (0,2) -- (0,3) -- (1,3) -- (1,3) -- (1,2) -- (1,1) -- (0,1);  
+  \draw[\fstColour] (0,0) -- (0,1);  
+  \draw[\fstColour] (0,0);  
+  \draw[\sndColour] (0,1) -- (0,2) -- (0,3) -- (1,3);  
+  \draw[\sndColour] (0,0) -- (1,0) -- (1,1) -- (1,2);  
+  \draw (1,2) -- (1,3);  
+  \draw[draw=none, fill=\fstColour] (0, 0) circle;  
+  \draw[draw=none, fill=\bothColour] (0, 1) circle;  
+  \draw[draw=none, fill=\sndColour] (1, 3) circle;
+  }
+  {
+    \draw[step=1,gray,thin] (0,0) grid (3,3);  
+  \draw[draw=none, fill=\fstColour!20] (0,0) -- (0,1) -- (0,0);  
+  \draw[draw=none, fill=\sndColour!20] (0,1) -- (0,2) -- (1,2) -- (2,2) -- (2,2) -- (2,1) -- (1,1) -- (0,1);  
+  \draw[\fstColour] (0,0) -- (0,1);  
+  \draw[\fstColour] (0,0);  
+  \draw[\sndColour] (0,1) -- (0,2) -- (1,2) -- (2,2);  
+  \draw[\sndColour] (0,0) -- (1,0) -- (2,0) -- (2,1);  
+  \draw (2,1) -- (2,2);  
+  \draw[draw=none, fill=\fstColour] (0, 0) circle;  
+  \draw[draw=none, fill=\bothColour] (0, 1) circle;  
+  \draw[draw=none, fill=\sndColour] (2, 2) circle;
+  }
+  {
+    \draw[step=1,gray,thin] (0,0) grid (3,3);  
+  \draw[draw=none, fill=\fstColour!20] (0,0) -- (0,1) -- (1,1) -- (1,0) -- (0,0);  
+  \draw[draw=none, fill=\sndColour!20] (1,1) -- (1,2) -- (2,2) -- (2,2) -- (2,1) -- (1,1);  
+  \draw[\fstColour] (0,0) -- (0,1) -- (1,1);  
+  \draw[\fstColour] (0,0) -- (1,0);  
+  \draw[\sndColour] (1,1) -- (1,2) -- (2,2);  
+  \draw[\sndColour] (1,0) -- (2,0) -- (2,1);  
+  \draw (2,1) -- (2,2);  
+  \draw[draw=none, fill=\fstColour] (0, 0) circle;  
+  \draw[draw=none, fill=\bothColour] (1, 1) circle;  
+  \draw[draw=none, fill=\sndColour] (2, 2) circle;
+  }
+  {
+    \draw[step=1,gray,thin] (0,0) grid (3,3);  
+  \draw[draw=none, fill=\fstColour!20] (0,0) -- (0,1) -- (0,2) -- (1,2) -- (1,1) -- (1,0) -- (0,0);  
+  \draw[draw=none, fill=\sndColour!20] (1,2) -- (2,2) -- (2,2) -- (1,2);  
+  \draw[\fstColour] (0,0) -- (0,1) -- (0,2) -- (1,2);  
+  \draw[\fstColour] (0,0) -- (1,0) -- (1,1);  
+  \draw[\sndColour] (1,2) -- (2,2);  
+  \draw[\sndColour] (1,1) -- (2,1);  
+  \draw (2,1) -- (2,2);  
+  \draw[draw=none, fill=\fstColour] (0, 0) circle;  
+  \draw[draw=none, fill=\bothColour] (1, 2) circle;  
+  \draw[draw=none, fill=\sndColour] (2, 2) circle;
+  }
+  {
+    \draw[step=1,gray,thin] (0,0) grid (3,3);  
+  \draw[draw=none, fill=\fstColour!20] (0,0) -- (0,1) -- (1,1) -- (2,1) -- (2,0) -- (1,0) -- (0,0);  
+  \draw[draw=none, fill=\sndColour!20] (2,1) -- (3,1) -- (3,1) -- (2,1);  
+  \draw[\fstColour] (0,0) -- (0,1) -- (1,1) -- (2,1);  
+  \draw[\fstColour] (0,0) -- (1,0) -- (2,0);  
+  \draw[\sndColour] (2,1) -- (3,1);  
+  \draw[\sndColour] (2,0) -- (3,0);  
+  \draw (3,0) -- (3,1);  
+  \draw[draw=none, fill=\fstColour] (0, 0) circle;  
+  \draw[draw=none, fill=\bothColour] (2, 1) circle;  
+  \draw[draw=none, fill=\sndColour] (3, 1) circle;
+  }
+
+}
+
+\newcommand*{\CBTs}{
+  { \begin{forest}
+    cbt [ ]
+    \end{forest} }
+    { \begin{forest}
+    cbt [[,left ] [,right ]]
+    \end{forest} }
+    { \begin{forest}
+    cbt [[,left ] [,right [ ]    [ ] ]]
+    \end{forest} }
+    { \begin{forest}
+    cbt [[,left [ ]    [ ] ] [,right ]]
+    \end{forest} }
+    { \begin{forest}
+    cbt [[,left ] [,right [ ]    [ [ ]    [ ] ] ]]
+    \end{forest} }
+    { \begin{forest}
+    cbt [[,left ] [,right [ [ ]    [ ] ]    [ ] ]]
+    \end{forest} }
+    { \begin{forest}
+    cbt [[,left [ ]    [ ] ] [,right [ ]    [ ] ]]
+    \end{forest} }
+    { \begin{forest}
+    cbt [[,left [ ]    [ [ ]    [ ] ] ] [,right ]]
+    \end{forest} }
+    { \begin{forest}
+    cbt [[,left [ [ ]    [ ] ]    [ ] ] [,right ]]
+    \end{forest} }
+}
+
+\newcommand*{\linkDiagrams}{
+  { \draw (1,0) -- (2,0); }
+  { \factoredArches{0}{}{0}{} }
+  { \factoredArches{0}{}{2}{2/3} }
+  { \factoredArches{2}{1/2}{0}{} }
+  { \factoredArches{0}{}{4}{2/5,3/4} }
+  { \factoredArches{0}{}{4}{2/3,4/5} }
+  { \factoredArches{2}{1/2}{2}{4/5} }
+  { \factoredArches{4}{1/4,2/3}{0}{} }
+  { \factoredArches{4}{1/2,3/4}{0}{} }  
+}
+
+\endinput
+
+% \begin{document}
+% \begin{itemize}
+% \item \getdata{1}\mydata
+% \item \getdata{2}\mydata
+% \item \getdata{3}\mydata
+% \item \getdata{24}\mylongdata
+% \end{itemize}
+% \end{document}

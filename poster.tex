@@ -10,9 +10,13 @@
 
 \usepackage{magma}
 
+\usepackage{catalan-drawings}
+
+\renewcommand{\baselinestretch}{1.5} 
+
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
-\usepackage[size=a3, orientation=portrait]{beamerposter}
+\usepackage[size=a3, orientation=portrait, scale=1.5]{beamerposter}
 \usetheme{gemini}
 \usecolortheme{gemini}
 \usepackage{graphicx}
@@ -39,9 +43,9 @@
 
 \title{A Universal Bijection for Catalan Families}
 
-\author{William Price}
+\author{Billy Price, Supervisor: Richard Brak}
 
-\institute[shortinst]{Supervisor: Richard Brak}
+\institute[shortinst]{~}
 
 % ====================
 % Footer (optional)
@@ -65,31 +69,36 @@
 % Body
 % ====================
 
+\newcommand{\getTri}[1]{\begin{tikzpicture}[line width=2pt, radius=3pt]\getdata{#1}\triangulations\end{tikzpicture}}
+\newcommand{\getSP}[1]{\begin{tikzpicture}[line width=2pt, radius=3pt, scale=0.75]\getdata{#1}\staircasePolygons\end{tikzpicture}}
+\newcommand{\getCBT}[1]{\scalebox{0.5}{\getdata{#1}\CBTs}}
+\newcommand{\getArch}[1]{\begin{tikzpicture}[line width=2pt, radius=4pt, scale=0.75]\getdata{#1}\linkDiagrams\end{tikzpicture}}
+  
+
+% \definecolor{red}{RGB}{165, 38, 38}
+
+
 \begin{document}
 
 \begin{frame}[t]
 \begin{columns}[t]
-\separatorcolumn
+% \separatorcolumn
 
 \begin{column}{\colwidth}
-
-  \begin{columns}[t]
-    \begin{column}{\colwidth/3}
-      \begin{tikzpicture}
-        \factoredTriangulation{2}{5}{3}{1/3}{/3/5}
-      \end{tikzpicture}
-    \end{column}
+  \begin{columns}
     
-    \begin{column}{\colwidth/3}
-      \begin{tikzpicture}[scale=0.3]
-        \factoredDyckPath{4}{1/1,2/0,3/1,4/0}{2}{6/2,7/1}
-      \end{tikzpicture}
-    \end{column}
-    
-    \begin{column}{\colwidth/3}
-      \begin{tikzpicture}
-        \draw (0,0) -- (1,1);
-      \end{tikzpicture}
+    \begin{column}{\colwidth}
+      \begin{tabular}{cccc}
+        \getCBT{1} & \getTri{1} & \getArch{1} & \getSP{1} \\
+        \getCBT{2} & \getTri{2} & \getArch{2} & \getSP{2} \\
+        \getCBT{3} & \getTri{3} & \getArch{3} & \getSP{3} \\
+        \getCBT{4} & \getTri{4} & \getArch{4} & \getSP{4} \\
+        \getCBT{5} & \getTri{5} & \getArch{5} & \getSP{5} \\
+        \getCBT{6} & \getTri{6} & \getArch{6} & \getSP{6} \\
+        \getCBT{7} & \getTri{7} & \getArch{7} & \getSP{7} \\
+        \getCBT{8} & \getTri{8} & \getArch{8} & \getSP{8} \\
+        \getCBT{9} & \getTri{9} & \getArch{9} & \getSP{9}
+      \end{tabular}
     \end{column}
     
   \end{columns}
