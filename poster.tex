@@ -12,7 +12,7 @@
 
 \usepackage{catalan-drawings}
 
-\renewcommand{\baselinestretch}{1.5} 
+\renewcommand{\baselinestretch}{1.1} 
 
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
@@ -40,8 +40,11 @@
 % ====================
 % Title
 % ====================
-
-\title{A Universal Bijection for Catalan Families}
+\makeatletter
+\newcommand\HUGE{\@setfontsize\Huge{45}{47}} 
+\makeatother
+% {\HUGE\texttt{magma}}
+\title{magma : A Library of Universal Catalan Bijections}
 
 \author{Billy Price, Supervisor: Richard Brak}
 
@@ -52,7 +55,7 @@
 % ====================
 
 \footercontent{
-  \href{https://www.example.com}{https://www.example.com} \hfill
+  % \href{https://www.example.com}{https://www.example.com} \hfill
   Vacation Scholarship Program, 2020 --- The University of Melbourne \hfill
   \href{mailto:billy.price@unimelb.edu.au}{billy.price@unimelb.edu.au}}
 % (can be left out to remove footer)
@@ -70,9 +73,11 @@
 % ====================
 
 \newcommand{\getTri}[1]{\begin{tikzpicture}[line width=2pt, radius=3pt]\getdata{#1}\triangulations\end{tikzpicture}}
-\newcommand{\getSP}[1]{\begin{tikzpicture}[line width=2pt, radius=3pt, scale=0.75]\getdata{#1}\staircasePolygons\end{tikzpicture}}
+\newcommand{\getSP}[1]{\begin{tikzpicture}[line width=2.5pt, radius=4pt, scale=0.75]\getdata{#1}\staircasePolygons\end{tikzpicture}}
 \newcommand{\getCBT}[1]{\scalebox{0.5}{\getdata{#1}\CBTs}}
 \newcommand{\getArch}[1]{\begin{tikzpicture}[line width=2pt, radius=4pt, scale=0.75]\getdata{#1}\linkDiagrams\end{tikzpicture}}
+
+  
   
 
 % \definecolor{red}{RGB}{165, 38, 38}
@@ -82,264 +87,117 @@
 
 \begin{frame}[t]
 \begin{columns}[t]
-% \separatorcolumn
+\separatorcolumn
 
 \begin{column}{\colwidth}
-  \begin{columns}
-    
-    \begin{column}{\colwidth}
-      \begin{tabular}{cccc}
-        \getCBT{1} & \getTri{1} & \getArch{1} & \getSP{1} \\
-        \getCBT{2} & \getTri{2} & \getArch{2} & \getSP{2} \\
-        \getCBT{3} & \getTri{3} & \getArch{3} & \getSP{3} \\
-        \getCBT{4} & \getTri{4} & \getArch{4} & \getSP{4} \\
-        \getCBT{5} & \getTri{5} & \getArch{5} & \getSP{5} \\
-        \getCBT{6} & \getTri{6} & \getArch{6} & \getSP{6} \\
-        \getCBT{7} & \getTri{7} & \getArch{7} & \getSP{7} \\
-        \getCBT{8} & \getTri{8} & \getArch{8} & \getSP{8} \\
-        \getCBT{9} & \getTri{9} & \getArch{9} & \getSP{9}
-      \end{tabular}
-    \end{column}
-    
-  \end{columns}
 
+  {
+    \usebeamerfont{caption}
+    \begin{tabular}{cccc}
+      \shortstack{Complete \\ Binary \\ Trees} & Triangulations & \shortstack{Link \\ Diagrams} & \shortstack{Staircase \\ Polygons} \\
+      &&& \\
+      % \shortstack{$\mathrm{Norm}=1$ \\ (generator)} & & & \\
+      \getCBT{1} & \getTri{1} & \getArch{1} & \getSP{1} \\
+      % $\mathrm{Norm}=2$ & & & \\
+      \hline
+      \getCBT{2} & \getTri{2} & \getArch{2} & \getSP{2} \\
+      % $\mathrm{Norm}=3$ & & & \\
+      \hline
+      \getCBT{3} & \getTri{3} & \getArch{3} & \getSP{3} \\
+      \getCBT{4} & \getTri{4} & \getArch{4} & \getSP{4} \\
+      % $\mathrm{Norm}=4$ & & & \\
+      \hline
+      \getCBT{5} & \getTri{5} & \getArch{5} & \getSP{5} \\
+      \getCBT{6} & \getTri{6} & \getArch{6} & \getSP{6} \\
+      \getCBT{7} & \getTri{7} & \getArch{7} & \getSP{7} \\
+      \getCBT{8} & \getTri{8} & \getArch{8} & \getSP{8} \\
+      \getCBT{9} & \getTri{9} & \getArch{9} & \getSP{9}
+    \end{tabular}
+  }
+
+\begin{block}{A larger example - which objects above multiply to give these?}
+  \begin{tabular}{ccc}
+    \getCBT{10} & \renewcommand{\defaultRadius}{1.5} \getTri{10} & \getSP{10}
+  \end{tabular}
+  \begin{center}
+    \getArch{10}
+  \end{center}
+\end{block}
+    
   % \begin{block}
 
-    Some block contents, followed by a diagram, followed by a dummy paragraph.
+  %   Some block contents, followed by a diagram, followed by a dummy paragraph.
 
-    \begin{figure}
-      \centering
-      \begin{tikzpicture}[scale=6]
-        \draw[step=0.25cm,color=gray] (-1,-1) grid (1,1);
-        \draw (1,0) -- (0.2,0.2) -- (0,1) -- (-0.2,0.2) -- (-1,0)
-          -- (-0.2,-0.2) -- (0,-1) -- (0.2,-0.2) -- cycle;
-      \end{tikzpicture}
-      \caption{A figure caption.}
-    \end{figure}
+  %   \begin{figure}
+  %     \centering
+  %     \begin{tikzpicture}[scale=6]
+  %       \draw[step=0.25cm,color=gray] (-1,-1) grid (1,1);
+  %       \draw (1,0) -- (0.2,0.2) -- (0,1) -- (-0.2,0.2) -- (-1,0)
+  %         -- (-0.2,-0.2) -- (0,-1) -- (0.2,-0.2) -- cycle;
+  %     \end{tikzpicture}
+  %     \caption{A figure caption.}
+  %   \end{figure}
 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ultricies
-    eget libero ac ullamcorper. Integer et euismod ante. Aenean vestibulum
-    lobortis augue, ut lobortis turpis rhoncus sed. Proin feugiat nibh a
-    lacinia dignissim. Proin scelerisque, risus eget tempor fermentum, ex
-    turpis condimentum urna, quis malesuada sapien arcu eu purus.
+  %   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ultricies
+  %   eget libero ac ullamcorper. Integer et euismod ante. Aenean vestibulum
+  %   lobortis augue, ut lobortis turpis rhoncus sed. Proin feugiat nibh a
+  %   lacinia dignissim. Proin scelerisque, risus eget tempor fermentum, ex
+  %   turpis condimentum urna, quis malesuada sapien arcu eu purus.
 
   % \end{block}
 
-  \begin{block}{A block containing a list}
+  % \begin{block}{A block containing a list}
 
-    Nam vulputate nunc felis, non condimentum lacus porta ultrices. Nullam sed
-    sagittis metus. Etiam consectetur gravida urna quis suscipit.
+  %   Nam vulputate nunc felis, non condimentum lacus porta ultrices. Nullam sed
+  %   sagittis metus. Etiam consectetur gravida urna quis suscipit.
 
-    \begin{itemize}
-      \item \textbf{Mauris tempor} risus nulla, sed ornare
-      \item \textbf{Libero tincidunt} a duis congue vitae
-      \item \textbf{Dui ac pretium} morbi justo neque, ullamcorper
-    \end{itemize}
+  %   \begin{itemize}
+  %     \item \textbf{Mauris tempor} risus nulla, sed ornare
+  %     \item \textbf{Libero tincidunt} a duis congue vitae
+  %     \item \textbf{Dui ac pretium} morbi justo neque, ullamcorper
+  %   \end{itemize}
 
-    Eget augue porta, bibendum venenatis tortor.
+  %   Eget augue porta, bibendum venenatis tortor.
 
+  % \end{block}
+
+\end{column}
+
+\separatorcolumn
+
+\begin{column}{\colwidth}
+
+  \begin{block}{$1, 1, 2, 5, 14, 42, 132, 429, 1430, 4862\dots$}
+    The Catalan Numbers are an integer sequence (A000108) counted by any of 214 combinatorial families described in R. Stanley's \textit{Catalan Numbers}. We would like to understand properties of these families via bijections to other Catalan families, however, it would be infeasible to design $214 \times 213 = 4582$ direct bijections, and composing bijections lacks canonicity.
+
+    Through R. Brak's insight that any Catalan family is just a Free Magma on one generator, we reduce the problem of finding bijections between pairs of families, to finding a unique way of multiplying and factorising objects within a family (just once for each family!). 
   \end{block}
 
-  \begin{alertblock}{A highlighted block}
+  \begin{alertblock}{\texttt{magma}}
+    \texttt{magma} is an open-source library/catalogue of Catalan Families, which provides a universal bijection function between any two Catalan Families. Given two Catalan Families, \texttt{A}, \texttt{B}, we obtain the bijection recursively:
+    
+    \texttt{
+    bij(x) :: A -> B\\
+    ~~~if x == A.generator:\\
+    ~~~~~return B.generator\\
+    ~~~else:\\
+    ~~~~~first, second := A.factorise(x)\\
+    ~~~~~return B.multiply( bij(first), bij(second) )}
 
-    This block catches your eye, so \textbf{important stuff} should probably go
-    here.
-
-    Curabitur eu libero vehicula, cursus est fringilla, luctus est. Morbi
-    consectetur mauris quam, at finibus elit auctor ac. Aliquam erat volutpat.
-    Aenean at nisl ut ex ullamcorper eleifend et eu augue. Aenean quis velit
-    tristique odio convallis ultrices a ac odio.
-
-    \begin{itemize}
-      \item \textbf{Fusce dapibus tellus} vel tellus semper finibus. In
-        consequat, nibh sed mattis luctus, augue diam fermentum lectus.
-      \item \textbf{In euismod erat metus} non ex. Vestibulum luctus augue in
-        mi condimentum, at sollicitudin lorem viverra.
-      \item \textbf{Suspendisse vulputate} mauris vel placerat consectetur.
-        Mauris semper, purus ac hendrerit molestie, elit mi dignissim odio, in
-        suscipit felis sapien vel ex.
-    \end{itemize}
-
-    Aenean tincidunt risus eros, at gravida lorem sagittis vel. Vestibulum ante
-    ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
-
+    Therefore, anyone with their own Catalan Family can implement a valid \texttt{multiply} and \texttt{factorise} function and immediately obtain a bijective function to/from any other Catalan Family.
   \end{alertblock}
 
 \end{column}
 
 \separatorcolumn
-
-\begin{column}{\colwidth}
-
-  \begin{block}{A block containing an enumerated list}
-
-    Vivamus congue volutpat elit non semper. Praesent molestie nec erat ac
-    interdum. In quis suscipit erat. \textbf{Phasellus mauris felis, molestie
-    ac pharetra quis}, tempus nec ante. Donec finibus ante vel purus mollis
-    fermentum. Sed felis mi, pharetra eget nibh a, feugiat eleifend dolor. Nam
-    mollis condimentum purus quis sodales. Nullam eu felis eu nulla eleifend
-    bibendum nec eu lorem. Vivamus felis velit, volutpat ut facilisis ac,
-    commodo in metus.
-
-    \begin{enumerate}
-      \item \textbf{Morbi mauris purus}, egestas at vehicula et, convallis
-        accumsan orci. Orci varius natoque penatibus et magnis dis parturient
-        montes, nascetur ridiculus mus.
-      \item \textbf{Cras vehicula blandit urna ut maximus}. Aliquam blandit nec
-        massa ac sollicitudin. Curabitur cursus, metus nec imperdiet bibendum,
-        velit lectus faucibus dolor, quis gravida metus mauris gravida turpis.
-      \item \textbf{Vestibulum et massa diam}. Phasellus fermentum augue non
-        nulla accumsan, non rhoncus lectus condimentum.
-    \end{enumerate}
-
-  \end{block}
-
-  \begin{block}{Fusce aliquam magna velit}
-
-    Et rutrum ex euismod vel. Pellentesque ultricies, velit in fermentum
-    vestibulum, lectus nisi pretium nibh, sit amet aliquam lectus augue vel
-    velit. Suspendisse rhoncus massa porttitor augue feugiat molestie. Sed
-    molestie ut orci nec malesuada. Sed ultricies feugiat est fringilla
-    posuere.
-
-    \begin{figure}
-      \centering
-      \begin{tikzpicture}
-        \begin{axis}[
-            scale only axis,
-            no markers,
-            domain=0:2*pi,
-            samples=100,
-            axis lines=center,
-            axis line style={-},
-            ticks=none]
-          \addplot[red] {sin(deg(x))};
-          \addplot[blue] {cos(deg(x))};
-        \end{axis}
-      \end{tikzpicture}
-      \caption{Another figure caption.}
-    \end{figure}
-
-  \end{block}
-
-  \begin{block}{Nam cursus consequat egestas}
-
-    Nulla eget sem quam. Ut aliquam volutpat nisi vestibulum convallis. Nunc a
-    lectus et eros facilisis hendrerit eu non urna. Interdum et malesuada fames
-    ac ante \textit{ipsum primis} in faucibus. Etiam sit amet velit eget sem
-    euismod tristique. Praesent enim erat, porta vel mattis sed, pharetra sed
-    ipsum. Morbi commodo condimentum massa, \textit{tempus venenatis} massa
-    hendrerit quis. Maecenas sed porta est. Praesent mollis interdum lectus,
-    sit amet sollicitudin risus tincidunt non.
-
-    Etiam sit amet tempus lorem, aliquet condimentum velit. Donec et nibh
-    consequat, sagittis ex eget, dictum orci. Etiam quis semper ante. Ut eu
-    mauris purus. Proin nec consectetur ligula. Mauris pretium molestie
-    ullamcorper. Integer nisi neque, aliquet et odio non, sagittis porta justo.
-
-    \begin{itemize}
-      \item \textbf{Sed consequat} id ante vel efficitur. Praesent congue massa
-        sed est scelerisque, elementum mollis augue iaculis.
-        \begin{itemize}
-          \item In sed est finibus, vulputate
-            nunc gravida, pulvinar lorem. In maximus nunc dolor, sed auctor eros
-            porttitor quis.
-          \item Fusce ornare dignissim nisi. Nam sit amet risus vel lacus
-            tempor tincidunt eu a arcu.
-          \item Donec rhoncus vestibulum erat, quis aliquam leo
-            gravida egestas.
-        \end{itemize}
-      \item \textbf{Sed luctus, elit sit amet} dictum maximus, diam dolor
-        faucibus purus, sed lobortis justo erat id turpis.
-      \item \textbf{Pellentesque facilisis dolor in leo} bibendum congue.
-        Maecenas congue finibus justo, vitae eleifend urna facilisis at.
-    \end{itemize}
-
-  \end{block}
-
-\end{column}
-
-% \separatorcolumn
-
-% \begin{column}{\colwidth}
-
-%   \begin{block}{A block containing some math}
-
-%     Nullam non est elit. In eu ornare justo. Maecenas porttitor sodales lacus,
-%     ut cursus augue sodales ac.
-
-%     $$
-%     \int_{-\infty}^{\infty} e^{-x^2}\,dx = \sqrt{\pi}
-%     $$
-
-%     Interdum et malesuada fames $\{1, 4, 9, \ldots\}$ ac ante ipsum primis in
-%     faucibus. Cras eleifend dolor eu nulla suscipit suscipit. Sed lobortis non
-%     felis id vulputate.
-
-%     \heading{A heading inside a block}
-
-%     Praesent consectetur mi $x^2 + y^2$ metus, nec vestibulum justo viverra
-%     nec. Proin eget nulla pretium, egestas magna aliquam, mollis neque. Vivamus
-%     dictum $\mathbf{u}^\intercal\mathbf{v}$ sagittis odio, vel porta erat
-%     congue sed. Maecenas ut dolor quis arcu auctor porttitor.
-
-%     \heading{Another heading inside a block}
-
-%     Sed augue erat, scelerisque a purus ultricies, placerat porttitor neque.
-%     Donec $P(y \mid x)$ fermentum consectetur $\nabla_x P(y \mid x)$ sapien
-%     sagittis egestas. Duis eget leo euismod nunc viverra imperdiet nec id
-%     justo.
-
-%   \end{block}
-
-%   \begin{block}{Nullam vel erat at velit convallis laoreet}
-
-%     Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-%     inceptos himenaeos. Phasellus libero enim, gravida sed erat sit amet,
-%     scelerisque congue diam. Fusce dapibus dui ut augue pulvinar iaculis.
-
-%     \begin{table}
-%       \centering
-%       \begin{tabular}{l r r c}
-%         \toprule
-%         \textbf{First column} & \textbf{Second column} & \textbf{Third column} & \textbf{Fourth} \\
-%         \midrule
-%         Foo & 13.37 & 384,394 & $\alpha$ \\
-%         Bar & 2.17 & 1,392 & $\beta$ \\
-%         Baz & 3.14 & 83,742 & $\delta$ \\
-%         Qux & 7.59 & 974 & $\gamma$ \\
-%         \bottomrule
-%       \end{tabular}
-%       \caption{A table caption.}
-%     \end{table}
-
-%     Donec quis posuere ligula. Nunc feugiat elit a mi malesuada consequat. Sed
-%     imperdiet augue ac nibh aliquet tristique. Aenean eu tortor vulputate,
-%     eleifend lorem in, dictum urna. Proin auctor ante in augue tincidunt
-%     tempor. Proin pellentesque vulputate odio, ac gravida nulla posuere
-%     efficitur. Aenean at velit vel dolor blandit molestie. Mauris laoreet
-%     commodo quam, non luctus nibh ullamcorper in. Class aptent taciti sociosqu
-%     ad litora torquent per conubia nostra, per inceptos himenaeos.
-
-%     Nulla varius finibus volutpat. Mauris molestie lorem tincidunt, iaculis
-%     libero at, gravida ante. Phasellus at felis eu neque suscipit suscipit.
-%     Integer ullamcorper, dui nec pretium ornare, urna dolor consequat libero,
-%     in feugiat elit lorem euismod lacus. Pellentesque sit amet dolor mollis,
-%     auctor urna non, tempus sem.
-
-%   \end{block}
-
-%   % \begin{block}{References}
-
-%   %   \nocite{*}
-%   %   \footnotesize{\bibliographystyle{plain}\bibliography{poster}}
-
-%   % \end{block}
-
-% \end{column}
-
-\separatorcolumn
 \end{columns}
+
+  % \begin{tabular*}{\pagewidth}{c@{\extracolsep{\fill}}c@{\extracolsep{\fill}}c@{\extracolsep{\fill}}c@{\extracolsep{\fill}}}
+  %   \getCBT{10} & \getTri{10} & \getArch{10} & \getSP{10}
+  % \end{tabular*}
+
+  
+    
 \end{frame}
 
 \end{document}

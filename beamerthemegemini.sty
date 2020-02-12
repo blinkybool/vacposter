@@ -119,7 +119,7 @@
   \begin{beamercolorbox}{headline}
     \begin{columns}
       \begin{column}{\maxlogowidth}
-        \vskip5ex
+        % \vskip5ex
         \ifdefined\insertlogoleft
         \vspace*{\fill}
         \hspace{10ex}
@@ -130,7 +130,9 @@
       \end{column}
       \begin{column}{\dimexpr\paperwidth-\maxlogowidth-\maxlogowidth}
         \usebeamerfont{headline}
-        \vskip3ex
+
+        % \vspace{10mm}
+
         \centering
         {\usebeamerfont{headline title}\usebeamercolor[fg]{headline title}\inserttitle\\[0.5ex]}
         {\usebeamerfont{headline author}\usebeamercolor[fg]{headline author}\insertauthor\\[1ex]}
