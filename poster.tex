@@ -9,10 +9,12 @@
 % ====================
 
 \usepackage{magma}
+\usepackage{xcolor}
+\usepackage{amsmath, amssymb, amsfonts}
 
 \usepackage{catalan-drawings}
 
-\renewcommand{\baselinestretch}{1.2} 
+\renewcommand{\baselinestretch}{1.1} 
 
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
@@ -32,7 +34,7 @@
 % (N+1)*\sepwidth + N*\colwidth = \paperwidth
 \newlength{\sepwidth}
 \newlength{\colwidth}
-\setlength{\sepwidth}{0.02\paperwidth}
+\setlength{\sepwidth}{0\paperwidth}
 \setlength{\colwidth}{0.425\paperwidth}
 
 \newcommand{\separatorcolumn}{\begin{column}{\sepwidth}\end{column}}
@@ -41,10 +43,13 @@
 % Title
 % ====================
 \makeatletter
-\newcommand\HUGE{\@setfontsize\Huge{45}{47}} 
+\newcommand\HUGE{\@setfontsize\Huge{32}{47}} 
+\makeatother
+\makeatletter
+\newcommand\SmallerBlockTitle{\@setfontsize\large{13}{13}} 
 \makeatother
 % {\HUGE\texttt{magma}}
-\title{magma : A Library of Universal Catalan Bijections}
+\title{\HUGE Free Magma : A Library of Universal Catalan Bijections}
 
 \author{Billy Price, Supervisor: Richard Brak}
 
@@ -56,8 +61,9 @@
 
 \footercontent{
   % \href{https://www.example.com}{https://www.example.com} \hfill
-  Vacation Scholarship Program, 2020 --- The University of Melbourne \hfill
-  \href{mailto:billy.price@unimelb.edu.au}{billy.price@unimelb.edu.au}}
+  Vacation Scholarship Program, 2020 \hfill
+  \href{github.com/billy-price/FreeMagma}{\texttt{github.com/billy-price/FreeMagma}} \hfill
+  My webpage: \href{billyprice.me}{billyprice.me}}
 % (can be left out to remove footer)
 
 % ====================
@@ -75,7 +81,7 @@
 \newcommand{\getTri}[1]{\begin{tikzpicture}[line width=2pt, radius=3pt]\getdata{#1}\triangulations\end{tikzpicture}}
 \newcommand{\getSP}[1]{\begin{tikzpicture}[line width=2.5pt, radius=4pt, scale=0.75]\getdata{#1}\staircasePolygons\end{tikzpicture}}
 \newcommand{\getCBT}[1]{\scalebox{0.5}{\getdata{#1}\CBTs}}
-\newcommand{\getArch}[1]{\begin{tikzpicture}[line width=2pt, radius=4pt, scale=0.75]\getdata{#1}\linkDiagrams\end{tikzpicture}}
+\newcommand{\getArch}[1]{\begin{tikzpicture}[line width=2pt, radius=5pt, scale=0.64]\getdata{#1}\linkDiagrams\end{tikzpicture}}
 
   
   
@@ -84,18 +90,18 @@
 
 
 \begin{document}
-
 \begin{frame}[t]
 \begin{columns}[t]
-
-
-\separatorcolumn
-
-
+% \separatorcolumn
 \begin{column}{\colwidth}
 
-  {
-    \usebeamerfont{caption}
+  \begin{block}{$1, 1, 2, 5, 14, 42, 132, 429, 1430, 4862\dots$}
+    The Catalan Numbers are an integer sequence (OEIS. A000108 \cite{OEISCatalan}) counted by any of 214 combinatorial families described in Stanley's \textit{Catalan Numbers} \cite{stanley2015catalan}. We would like to understand properties of these families via bijections to other Catalan families, however, it would be infeasible to design $214 \times 213 = 4582$ direct bijections, and composing bijections lacks canonicity.
+
+    Through R. Brak's insight that any Catalan family is a Free Magma on one generator \cite{brak2018universal}, we reduce the problem of finding bijections between pairs of families, to recognising this Free Magma structure within the family (just once for each family!). This means finding a unique way of multiplying and factorising objects.
+    \[* : \textcolor{\fstColour}{\texttt{C}} \times \textcolor{\sndColour}{\texttt{C}} \to \texttt{C} \qquad \Delta : \texttt{C} \setminus \{\epsilon\} \to \textcolor{\fstColour}{\texttt{C}} \times \textcolor{\sndColour}{\texttt{C}}\]
+  \end{block}
+    {\usebeamerfont{caption}
     \begin{tabular}{cccc}
       \shortstack{Complete \\ Binary \\ Trees} & Triangulations & \shortstack{Staircase \\ Polygons} & \shortstack{Link \\ Diagrams} \\
       &&& \\
@@ -114,34 +120,37 @@
       \getCBT{6} & \getTri{6} & \getSP{6} & \getArch{6} \\
       \getCBT{7} & \getTri{7} & \getSP{7} & \getArch{7} \\
       \getCBT{8} & \getTri{8} & \getSP{8} & \getArch{8} \\
-      \getCBT{9} & \getTri{9} & \getSP{9} & \getArch{9}
+      \getCBT{9} & \getTri{9} & \getSP{9} & \getArch{9} \\ \hline
     \end{tabular}
   }
+  
+  \vspace{2ex}
+  
+  \begin{block}{\SmallerBlockTitle Which Link Diagram do these larger objects biject to? }
+      \begin{tabular}{ccc}
+        \getCBT{10} & \renewcommand{\defaultRadius}{1.5} \getTri{10} & \getSP{10}
+      \end{tabular}
+    \end{block}
 
-\begin{block}{A larger example - what does the corresponding link diagram look like?}
-  \begin{tabular}{ccc}
-    \getCBT{10} & \renewcommand{\defaultRadius}{1.5} \getTri{10} & \getSP{10}
-  \end{tabular}
-  % \begin{center}
-  %   \getArch{10}
-  % \end{center}
-\end{block}
+
+
 
 \end{column}
 
-\separatorcolumn
+% \separatorcolumn
 
 \begin{column}{\colwidth}
 
-  \begin{block}{$1, 1, 2, 5, 14, 42, 132, 429, 1430, 4862\dots$}
-    The Catalan Numbers are an integer sequence (A000108) counted by any of 214 combinatorial families described in R. Stanley's \textit{Catalan Numbers}. We would like to understand properties of these families via bijections to other Catalan families, however, it would be infeasible to design $214 \times 213 = 4582$ direct bijections, and composing bijections lacks canonicity.
-
-    Through R. Brak's insight that any Catalan family is just a Free Magma on one generator, we reduce the problem of finding bijections between pairs of families, to finding a unique way of multiplying and factorising objects within a family (just once for each family!). 
-  \end{block}
-
-  \begin{alertblock}{\texttt{magma}}
-    \texttt{magma} is an open-source library/catalogue of Catalan Families, which provides a universal bijection function between any two Catalan Families. Given two Catalan Families, \texttt{A}, \texttt{B}, we obtain the bijection, \texttt{bij :: A -> B} recursively:
+  % \begin{block}{A larger example - what does the corresponding link diagram look like?}
     
+  %   % \begin{center}
+  %   %   \getArch{10}
+  %   % \end{center}
+  % \end{block}
+
+
+  \begin{alertblock}{\texttt{FreeMagma}}
+    \texttt{FreeMagma} is an open-source library of Catalan families written in Python, which provides a universal bijection function. Given two Catalan families, \texttt{A}, \texttt{B}, we obtain the bijection, \texttt{bij::A -> B} recursively:\\
     \texttt{
     def bij(x):\\
     ~~~if x == A.generator:\\
@@ -149,17 +158,39 @@
     ~~~else:\\
     ~~~~~first, second := A.factorise(x)\\
     ~~~~~return B.multiply( bij(first), bij(second) )}
+    However, recognising the right multiplication rule is not always a trivial task, hence one purpose of \texttt{FreeMagma} is to gather a collection of as many valid multiplication/factorisation rules for Catalan families as possible.
 
-    Therefore, anyone with their own Catalan Family can implement a valid \texttt{multiply} and \texttt{factorise} function and immediately obtain a bijective function to/from any other Catalan Family.
+    Mapping between representations of geometric Catalan families is no fun if we can't \textit{see} them, so \texttt{FreeMagma} provides functions for producing Ti\textit{k}Z output (see left) and \texttt{ascii} drawings wherever feasible.
   \end{alertblock}
-
-  \begin{block}{Representing Families}
-    A central challenge to this project was deciding on the best way to represent each family's objects in the code, especially as many Catalan Families are geometric in nature. As is this re
+  \begin{block}{Data Structures}
+    A central challenge to this project was deciding on the best way to represent each family's objects in the code, especially as many Catalan families are geometric in nature, with many equivalent embeddings in the plane. Wherever possible, we chose representations that were:
+    \begin{itemize}
+      \item Intuitive for the user to input
+      \item As canonical as possible
+      \item Easy to manipulate 
+    \end{itemize}
+    % For example, we represent a Staircase Polygon as a pair of step sequences (representing the upper and lower paths), which are strings of \texttt{N}'s and \texttt{E}'s indicating north and east steps. This is both intuitive to input, independent of embedding, and makes the multiplication/factorisation functions easier to write.
   \end{block}
+  \begin{block}{Caching for Speed}
+    The recursive structure of Catalan families presents a significant danger in exponential blow-up. For instance, the standard algorithm for computing the list objects of size $m$ recursively calls itself $\mathcal{O}(m^2)$ many times! To remedy this, \texttt{FreeMagma} caches function calls where-ever possible. When bijecting an object with many occurrences of a sub-object, we only factorise and biject that sub-object once, and reuse that computation for every other occurence. 
+  \end{block}
+
+  % \begin{block}{Visualisation}
+    
+
+  %   % To emphasise the role of the recursive Free-Magma structure, \texttt{FreeMagma} also outputs Ti\textit{k}Z code with the \textcolor{\fstColour}{\texttt{first}} and \textcolor{\sndColour}{\texttt{second}} factor coloured. 
+  % \end{block}
+
+  \begin{block}{Acknowledgements}
+    I would like to thank the Vacation Scholarship Program and Richard Brak for the opportunity to do this project and for Richard's expert advice. Also thank you Huy Quang Dinh for discovering many of the multiplication/factorisation rules.
+  \end{block}
+  
+  \nocite{*}
+  \footnotesize{\bibliographystyle{plain}\bibliography{poster}}
 
 \end{column}
 
-\separatorcolumn
+% \separatorcolumn
 
 \end{columns}
 
