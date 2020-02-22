@@ -11,6 +11,7 @@
 \usepackage{magma}
 \usepackage{xcolor}
 \usepackage{amsmath, amssymb, amsfonts}
+\usepackage{multicol}
 
 \usepackage{catalan-drawings}
 
@@ -150,7 +151,7 @@
 
 
   \begin{alertblock}{\texttt{FreeMagma}}
-    \texttt{FreeMagma} is an open-source library of Catalan families written in Python, which provides a universal bijection function. Given two Catalan families, \texttt{A}, \texttt{B}, we obtain the bijection, \texttt{bij::A -> B} recursively:\\
+    \texttt{FreeMagma} \cite{FreeMagma2020} is an open-source library of Catalan families I wrote for this project in Python, which provides a universal bijection function. Given two Catalan families, \texttt{A}, \texttt{B}, we obtain the bijection, \texttt{bij::A -> B} recursively:\\
     \texttt{
     def bij(x):\\
     ~~~if x == A.generator:\\
@@ -172,7 +173,7 @@
     % For example, we represent a Staircase Polygon as a pair of step sequences (representing the upper and lower paths), which are strings of \texttt{N}'s and \texttt{E}'s indicating north and east steps. This is both intuitive to input, independent of embedding, and makes the multiplication/factorisation functions easier to write.
   \end{block}
   \begin{block}{Caching for Speed}
-    The recursive structure of Catalan families presents a significant danger in exponential blow-up. For instance, the standard algorithm for computing the list objects of size $m$ recursively calls itself $\mathcal{O}(m^2)$ many times! To remedy this, \texttt{FreeMagma} caches function calls where-ever possible. When bijecting an object with many occurrences of a sub-object, we only factorise and biject that sub-object once, and reuse that computation for every other occurence. 
+    The recursive structure of Catalan families presents a significant danger in exponential blow-up. For instance, the standard algorithm for computing the list objects of size $m$ recursively calls itself $\mathcal{O}(m)$ many times! To remedy this, \texttt{FreeMagma} caches function calls where-ever possible. When bijecting an object with many occurrences of a sub-object, we only factorise and biject that sub-object once, and reuse that computation for every other occurence. 
   \end{block}
 
   % \begin{block}{Visualisation}
@@ -182,15 +183,16 @@
   % \end{block}
 
   \begin{block}{Acknowledgements}
-    I would like to thank the Vacation Scholarship Program and Richard Brak for the opportunity to do this project and for Richard's expert advice. Also thank you Huy Quang Dinh for discovering many of the multiplication/factorisation rules.
+    I would like to thank the Vacation Scholarship Program and Richard Brak for the opportunity to do this project and for Richard's expert advice. Also thank you Huy Quang Dinh for discovering many of the multiplication/factorisation rules. If you'd like to contribute your own, please contact either Richard or me, and check out the repo below.
+    \begin{multicols}{2}
+      \nocite{*}
+      \scriptsize{\bibliographystyle{plain}\bibliography{poster}}
+    \end{multicols} 
   \end{block}
   
-  \nocite{*}
-  \footnotesize{\bibliographystyle{plain}\bibliography{poster}}
 
 \end{column}
 
-% \separatorcolumn
 
 \end{columns}
 
